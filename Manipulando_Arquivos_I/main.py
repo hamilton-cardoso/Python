@@ -1,10 +1,19 @@
-with open("pagina.html", "w") as pagina:
-    pagina.write("<body> <h1> Este é um teste! </h1>")
-    pagina.write("<br><h2> Abaixo seguem nomes das suas cores favoritas:  </h2>")
-    pagina.write("<h3>")
-    nome=""
-    while nome!="SAIR":
-        nome = input("Digite o nome de uma cor favorita ou SAIR: ").upper()
-        if nome!="SAIR":
-            pagina.write("<br>"+nome)
-    pagina.write("</h3></body>")
+from Funcoes import *
+inventario={}
+opcao=chamarMenu()
+while opcao>0 and opcao<5:
+    if opcao==1:
+        registrar(inventario)
+    elif opcao==2:
+        persistir(inventario)
+    elif opcao==3:
+        resultado = exibir()
+        for linha in resultado:
+            lista = linha.split(";")
+            print("Data.........: ", lista[1])
+            print("Descrição....: ", lista[2])
+            print("Departamento.: ", lista[3])
+        opcao = chamarMenu()
+    elif opcao==4:
+        gerarHtml()
+    opcao = chamarMenu()
